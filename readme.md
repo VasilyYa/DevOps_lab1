@@ -23,10 +23,12 @@
 
 3. Выдаем права на запись файла /var/www/html/index.html для нужного юзера
 > sudo chown :dev5 /var/www/html/index.html (смена группы у файла)
+>
 > sudo chmod g+w /var/www/html/index.html (выдача прав группе на запись файла)
 
 4. Настраиваем запуск скрипта по CRON-у для нужного юзера
 >crontab -e
+>
 > * * * * * /home/dev5/lab1/lab1_script.sh > /var/www/html/index.html 2>/home/dev5/lab1/error.log
 
 5. По хорошему чтобы страница обновлялась при повторных запросах из браузера - запретить браузеру кэшировать, добавив в секцию location веб-сервера nginx директивы:
