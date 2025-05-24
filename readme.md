@@ -10,7 +10,8 @@
 # Лог выполнения задания:
 
 1. Устанавливаем nginx на ubuntu-сервере (ip сервера 82.146.50.10):
->sudo apt update && sudo apt install -y nginx
+> sudo apt update && sudo apt install -y nginx
+
 Проверяем работу nginx на порту 80: "netstat -tulpn", проверяем открытие страницы дефолту в браузере: http://82.146.50.10/ (либо curl 82.146.50.10). 
 Согласно конфигу /etc/nginx/sites-enabled/default открывается одна из дефолтных index-страниц /var/www/html/index.nginx-debian.html
 Отправлять данные о погоде будем на страницу index.html.
