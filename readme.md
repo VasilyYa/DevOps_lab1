@@ -10,7 +10,7 @@
 # Лог выполнения задания:
 
 1. Устанавливаем nginx на ubuntu-сервере (ip сервера 82.146.50.10):
-sudo apt update && sudo apt install -y nginx
+>sudo apt update && sudo apt install -y nginx
 Проверяем работу nginx на порту 80: "netstat -tulpn", проверяем открытие страницы дефолту в браузере: http://82.146.50.10/ (либо curl 82.146.50.10). 
 Согласно конфигу /etc/nginx/sites-enabled/default открывается одна из дефолтных index-страниц /var/www/html/index.nginx-debian.html
 Отправлять данные о погоде будем на страницу index.html.
@@ -21,15 +21,15 @@ sudo apt update && sudo apt install -y nginx
 Файл необходимо сделать исполняемым: chmod -x /home/$USER/lab1-script.sh
 
 3. Выдаем права на запись файла /var/www/html/index.html для нужного юзера
-sudo chown :dev5 /var/www/html/index.html (смена группы у файла)
-sudo chmod g+w /var/www/html/index.html (выдача прав группе на запись файла)
+> sudo chown :dev5 /var/www/html/index.html (смена группы у файла)
+> sudo chmod g+w /var/www/html/index.html (выдача прав группе на запись файла)
 
 4. Настраиваем запуск скрипта по CRON-у для нужного юзера
-crontab -e :
-* * * * * /home/dev5/lab1/lab1_script.sh > /var/www/html/index.html 2>/home/dev5/lab1/error.log
+>crontab -e
+> * * * * * /home/dev5/lab1/lab1_script.sh > /var/www/html/index.html 2>/home/dev5/lab1/error.log
 
 5. По хорошему чтобы страница обновлялась при повторных запросах из браузера - запретить браузеру кэшировать, добавив в секцию location веб-сервера nginx директивы:
-    # Заголовки, запрещающие кэширование
+    #Заголовки, запрещающие кэширование
     add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
     add_header Pragma "no-cache";
     add_header Expires 0;  
